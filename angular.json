@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "ephe-wars": {
+      "projectType": "application",
+      "root": "apps/ephe-wars",
+      "sourceRoot": "apps/ephe-wars/src",
+      "prefix": "ephesoft",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/ephe-wars",
+            "index": "apps/ephe-wars/src/index.html",
+            "main": "apps/ephe-wars/src/main.ts",
+            "polyfills": "apps/ephe-wars/src/polyfills.ts",
+            "tsConfig": "apps/ephe-wars/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/ephe-wars/src/favicon.ico",
+              "apps/ephe-wars/src/assets"
+            ],
+            "styles": ["apps/ephe-wars/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/ephe-wars/src/environments/environment.ts",
+                  "with": "apps/ephe-wars/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ephe-wars:build:production"
+            },
+            "development": {
+              "browserTarget": "ephe-wars:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ephe-wars:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/ephe-wars/src/**/*.ts",
+              "apps/ephe-wars/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/ephe-wars"],
+          "options": {
+            "jestConfig": "apps/ephe-wars/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ephe-wars-e2e": {
+      "root": "apps/ephe-wars-e2e",
+      "sourceRoot": "apps/ephe-wars-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ephe-wars-e2e/cypress.json",
+            "tsConfig": "apps/ephe-wars-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ephe-wars:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ephe-wars:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ephe-wars-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "ephe-wars"
+}
