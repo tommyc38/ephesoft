@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ephesoft/people": ["libs/people/src/index.ts"],
+      "@ephesoft/planets": ["libs/planets/src/index.ts"],
+      "@ephesoft/ui-components": ["libs/ui-components/src/index.ts"],
+      "@ephesoft/utilities": ["libs/utilities/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -33,6 +33,18 @@
     "ephe-wars-e2e": {
       "tags": [],
       "implicitDependencies": ["ephe-wars"]
+    },
+    "people": {
+      "tags": []
+    },
+    "planets": {
+      "tags": []
+    },
+    "ui-components": {
+      "tags": []
+    },
+    "utilities": {
+      "tags": []
     }
   }
 }
