@@ -145,6 +145,56 @@
         }
       }
     },
+    "people-data": {
+      "projectType": "library",
+      "root": "libs/people-data",
+      "sourceRoot": "libs/people-data/src",
+      "prefix": "ephesoft",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/people-data"],
+          "options": {
+            "jestConfig": "libs/people-data/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/people-data/src/**/*.ts",
+              "libs/people-data/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "planet-data": {
+      "projectType": "library",
+      "root": "libs/planet-data",
+      "sourceRoot": "libs/planet-data/src",
+      "prefix": "ephesoft",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/planet-data"],
+          "options": {
+            "jestConfig": "libs/planet-data/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/planet-data/src/**/*.ts",
+              "libs/planet-data/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "planets": {
       "projectType": "library",
       "root": "libs/planets",

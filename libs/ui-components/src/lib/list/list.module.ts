@@ -11,7 +11,9 @@ import { ListItemComponent } from './list-item/list-item.component';
     ListItemComponent
   ],
   imports: [
+    CommonModule,
     CommonModule
-  ]
+  ],
+  exports: [ListComponent, ListItemComponent]
 })
 export class ListModule { }

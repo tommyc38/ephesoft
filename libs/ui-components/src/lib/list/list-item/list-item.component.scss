@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 48px;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px;
+  position: relative;
+  height: inherit;
+}
