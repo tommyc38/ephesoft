@@ -120,31 +120,6 @@
         }
       }
     },
-    "people": {
-      "projectType": "library",
-      "root": "libs/people",
-      "sourceRoot": "libs/people/src",
-      "prefix": "ephesoft",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/people"],
-          "options": {
-            "jestConfig": "libs/people/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/people/src/**/*.ts",
-              "libs/people/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "people-data": {
       "projectType": "library",
       "root": "libs/people-data",

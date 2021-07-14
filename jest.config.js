@@ -3,7 +3,6 @@ module.exports = {
     '<rootDir>/apps/ephe-wars',
     '<rootDir>/libs/ui-components',
     '<rootDir>/libs/planets',
-    '<rootDir>/libs/people',
     '<rootDir>/libs/utilities',
     '<rootDir>/libs/planet-data',
     '<rootDir>/libs/people-data',

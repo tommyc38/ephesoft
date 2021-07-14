@@ -1,0 +1,14 @@
+<p>PERSON DETAIL</p>
+<hr>
+<div>
+  <p *ngIf='!person'>No Person Selected</p>
+</div>
+<div *ngIf='person'>
+  <p>NAME: {{person.name}}</p>
+  <p>HAIR COLOR: {{person.hair_color}}</p>
+  <p>BIRTH YEAR: {{person.birth_year}}</p>
+  <p>EYE COLOR: {{person.eye_color}}</p>
+  <p>GENDER: {{person.gender}}</p>
+  <p>HEIGHT: {{person.height}}</p>
+  <p>MASS: {{person.mass}}</p>
+</div>

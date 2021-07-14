@@ -1,0 +1,25 @@
+<p>PLANETS</p>
+<hr>
+<ng-container *ngIf='!hasError && !planetResponse'>
+ Loading...
+</ng-container>
+<ng-container *ngIf='planetResponse'>
+  <ui-list>
+    <ui-list-item *ngFor='let planet of planetResponse.results; trackBy:trackByFn' (click)='setPlanet(planet)'>
+      <a [routerLink]="['/planets', page ]">{{planet.name | uppercase}}</a>
+    </ui-list-item>
+  </ui-list>
+  <br>
+  <div class='page-controls'>
+    <button [disabled]='planetResponse.previous === null' (click)='navigateToPage(planetResponse.previous)'>previous</button>
+    <button [disabled]='planetResponse.next === null' (click)='navigateToPage(planetResponse.next)'>next</button>
+  </div>
+</ng-container>
+
+<br>
+<p *ngIf='hasError'>
+  ERROR
+</p>
+<br>
+<planet-viewer [planet]='planetDetail' [residents]='planetResidentDetail'></planet-viewer>
+

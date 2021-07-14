@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ui-list-item',
@@ -8,9 +8,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
+  @Input() selected = false
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

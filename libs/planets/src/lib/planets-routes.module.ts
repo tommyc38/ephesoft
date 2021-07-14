@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PlanetViewerComponent } from './planet-viewer/planet-viewer.component';
+import { PlanetsFeatComponent } from './planets-feat/planets-feat.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
     path: '',
-    component: PlanetViewerComponent
+    component: PlanetsFeatComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), CommonModule],
   exports: [RouterModule]
 })
 export class PlanetRoutesModule { }

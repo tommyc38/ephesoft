@@ -1,1 +1,25 @@
-<p>planet-viewer works!</p>
+<p>PLANET DETAIL</p>
+<hr>
+<div>
+  <p *ngIf='!planet'>No Planet Selected</p>
+</div>
+<div *ngIf='planet'>
+  <p>NAME: {{planet.name}}</p>
+  <p>POPULATION: {{planet.population === 'unknown' ? 'unknown' : (planet.population | number)}}</p>
+  <p>DIAMETER: {{planet.diameter === 'unknown' ? 'unknown' : (planet.diameter | number) }}</p>
+  <p>TERRAIN: {{planet.terrain}}</p>
+  <p>CLIMATE: {{planet.climate}}</p>
+  <p>ORBITAL PERIOD: {{planet.orbital_period === 'unknown' ? 'unknown':(planet.orbital_period | number)}}</p>
+  <p>ROTATION PERIOD:  {{planet.rotation_period}}</p>
+  <p>GRAVITY:  {{planet.gravity}}</p>
+  <p>SURFACE WATER: {{planet.surface_water}}</p>
+  <ng-container *ngIf='residents'>
+    <p>RESIDENTS: <span *ngIf='residents.length === 0'>None</span> </p>
+    <ui-list *ngIf='residents.length > 0'>
+      <ui-list-item #item *ngFor='let resident of residents' (click)='selectResident(resident); item.selected = !item.selected'>
+        <p class='resident'>{{resident.name}}</p>
+        <planet-people-viewer *ngIf='item.selected' [person]='resident'></planet-people-viewer>
+      </ui-list-item>
+    </ui-list>
+  </ng-container>
+</div>

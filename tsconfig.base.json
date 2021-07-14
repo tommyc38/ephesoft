@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ephesoft/people": ["libs/people/src/index.ts"],
       "@ephesoft/people-data": ["libs/people-data/src/index.ts"],
       "@ephesoft/planet-data": ["libs/planet-data/src/index.ts"],
       "@ephesoft/planets": ["libs/planets/src/index.ts"],

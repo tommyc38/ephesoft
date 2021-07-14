@@ -1,29 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Planet } from '@ephesoft/utilities';
+import { Planet, Response } from '@ephesoft/utilities';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
+interface PageData {
+  [page: string]: Response<Planet>
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanetService {
 
-  private url = 'https://swapi.dev/api/';
-  private planets: Planet[] = [];
+  private url = 'https://swapi.dev/api/planets/';
+  private _pageData: PageData = {};
 
   constructor(private http: HttpClient) {
   }
 
-  getPlanets(): Observable<Planet[]> {
-    if (this.planets.length > 0) return of(this.planets);
-    return this.http.get<Record<string,any>>(this.url).pipe(
-      take(1),
-      map(planets => {
-        this.planets = planets.results as Planet[];
-        return this.planets;
-      })
-    );
-
+  getPlanets(page: number = 1): Observable<Response<Planet>> {
+    if (this._pageData[page]) {
+      return of(this._pageData[page]);
+    }
+    const url = `${this.url}?page=${page}`;
+    return this.http.get<Response<Planet>>(url).pipe(
+      map(response => {
+        this._pageData[page] = response;
+        return response;
+      }));
   }
+
+  getPageFromUrl(url: string | null): number | null {
+    if (typeof url === 'string') {
+      const index = url.lastIndexOf('=');
+      if (index === -1) return null;
+      return +url.slice(index + 1);
+    }
+    return null;
+  }
+
 }
